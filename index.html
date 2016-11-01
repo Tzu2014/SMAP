@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="http://demos.jquerymobile.com/1.4.0/theme-classic/theme-classic.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<title>BMI Calculator</title>
+	</head>
+	<style>
+		div.ui-input-text { 
+			width: 200px !important 
+		}
+	</style>
+	<script language="javascript">
+		$(function() {
+			$("#BMICompute").click( function()
+				{
+//						alert('button clicked');
+					var height = $( "#InputHeight" ).val();
+					var weight = $( "#InputWeight" ).val();
+//						alert(height + ' + ' + weight);
+						
+					var result = weight / (height * height); // compute BMI
+					var result2 = result.toFixed(2); // two decimal places
+//						alert(result2);
+					
+					$("#result").html("Your height is " + height + "(m), weight is " + weight + "(kg)<br/>BMI Value = "+result2);
+				}
+			);
+			$("#reCompute").click( function()
+				{
+					$('#InputHeight').val('');
+					$('#InputWeight').val('');
+					
+					$("#result").html("");
+				}
+			);
+		});
+	
+	</script>
+	<body>  
+	  
+	<!-- HOME -->
+		<div data-role="page" id="home" data-theme="b">
+			<div data-role="header">
+				<h1>BMI Calculator</h1>
+			</div>
+			
+			<div data-role="content" align="center">	
+				<div class="ui-field-contain">
+					<label for="InputHeight">Height(m):</label>
+					<input type="text" name="name" id="InputHeight" value="">
+					<label for="InputWeight">Weight(kg):</label>
+					<input type="text" name="name" id="InputWeight" value="">
+				</div>	
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="button" name="name" id="BMICompute" value="GO~"></div>
+					<div class="ui-block-b"><input type="button" name="name" id="reCompute" value="reset"></div>
+				</fieldset>
+				<div>
+					<label id="result"></label>
+				</div>	
+			</div>
+			
+			<div data-role="footer">
+				<h5>by Tzu</h5>
+			</div>
+		</div>
+		
+	</body>
+</html>
